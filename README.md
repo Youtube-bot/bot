@@ -1,4 +1,8 @@
-YouTube-Bot                                                   				[![Discord Bots](https://top.gg/api/widget/status/486948160124485642.svg)](https://top.gg/bot/486948160124485642)
+YouTube-Bot                                                   				
+[![Discord Bots](https://top.gg/api/widget/status/486948160124485642.svg)](https://top.gg/bot/486948160124485642) [![Discord Bots](https://top.gg/api/widget/lib/486948160124485642.svg)](https://top.gg/bot/486948160124485642)
+
+[![Discord Bots](https://top.gg/api/widget/owner/486948160124485642.svg)](https://top.gg/bot/486948160124485642) [![Discord Bots](https://top.gg/api/widget/servers/486948160124485642.svg)](https://top.gg/bot/486948160124485642)
+
 
 =======
 
