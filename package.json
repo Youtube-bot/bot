@@ -1,0 +1,25 @@
+{
+  "name": "youtube-bot",
+  "version": "3.5.0-dev",
+  "description": "Youtube bot is a discord bot offering a lot of freatures on discord, add it to spice up your discord experiance",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/youtube-bot/youtube-bot.git"
+  },
+  "keywords": [
+    "youtube-bot"
+  ],
+  "author": "HiiZun",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/youtube-bot/youtube-bot/issues"
+  },
+  "homepage": "https://github.com/youtube-bot/youtube-bot#readme",
+  "dependencies": {
+    "discord.js": "^11.5.1"
+  }
+}

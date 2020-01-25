@@ -1,0 +1,12 @@
+# Bot Configuration
+config.json
+
+# Node modules
+node_modules
+package-lock.json
+
+# Mac OS files
+.DS_Store
+
+# PM2
+report*.json
