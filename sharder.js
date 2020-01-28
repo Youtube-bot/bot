@@ -1,10 +1,24 @@
 const { ShardingManager } = require('discord.js');
 const config = require("./config.json")
-const manager = new ShardingManager('./index.js', { token: config.token });
+moment = require("moment"), 
+shards = new ShardingManager("./index.js", {
+    token: config.token, 
+    totalShards: 2,  // or "auto",
+    respawn: true
+});
 
-var shards = "2";
 
-if(NaN(shards)) return console.error("The number of shards is invalid or ")
+shards.on("launch", (shard) => { 
+	console.log(`${get_date(new Date())} I launched shard ${shard.ids + 1}.`);
+});
 
-manager.spawn(shards);
-manager.on('launch', shard => console.log(`Launched shard ${shard.id}`));
+shards.spawn() //When all shards are loaded, it puts a message in the console.
+	.then(() => {
+		console.log(`${get_date(new Date())} ${shards.totalShards} shards are totally launched.`);
+	});
+
+function get_date (date) { //get_date function allows you to see the shards launch date.
+	const time = `[${moment().format("DD/MM/YYYY HH:mm:ss")}]`;
+
+	return time;
+};

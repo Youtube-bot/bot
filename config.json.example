@@ -1,5 +1,15 @@
 {
     "token":"tokenhere",
     "prefix":"!",
-    "topgg":"topgg"
+    "footer":"[Donate](https://www.patreon.com/botyoutube) ● [Website](https://youtube-bot.com) ● [Like Me !](https://bladebotlist.xyz/bot/youtubebot) ● [Invite](https://discordapp.com/oauth2/authorize?client_id=596068311863918604&permissions=8&scope=bot)",
+    "topgg":"tokentopgg",
+    
+    "giveaways":{
+        "allowbots":"false",
+        "updatetimer":"5000",
+        "embedcolor":"FF0000", 
+        "reaction":"🎉"
+    }
+
+    
 }

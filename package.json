@@ -21,6 +21,9 @@
   },
   "homepage": "https://github.com/youtube-bot/youtube-bot#readme",
   "dependencies": {
-    "discord.js": "^11.5.1"
+    "discord-giveaways": "^3.0.11",
+    "discord.js": "github:discordjs/discord.js",
+    "moment": "^2.24.0",
+    "ms": "^2.1.2"
   }
 }

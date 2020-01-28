@@ -5,6 +5,9 @@ config.json
 node_modules
 package-lock.json
 
+# Giveaways
+assets/giveaways.json
+
 # Mac OS files
 .DS_Store
 
