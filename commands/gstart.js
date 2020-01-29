@@ -3,15 +3,21 @@ const config = require("../config.json")
 
 exports.run = (client, message, args) => {
 
+
     if(!args[0]) return message.channel.send("❌ | Error: please add when the giveaway will finish (ex: " + config.prefix + "gstart <time>(s/m/d/w) <winners> a awesome sweat)")
     if(!args[1]) return message.channel.send("❌ | Error: please add how many winners i will pick (ex: " + config.prefix + "gstart <time>(s/m/d/w) <winners> a awesome sweat)")
     if(isNaN(args[1])) return message.channel.send("❌ | Error: please add a valid number of winners")
 
     if(args[1] > 5) return message.channel.send("🛑 | Error: you can have more than 5 winners, you must be premium to have more than 5 winners")
     
-    let giveawayCount = client.giveawaysManager.giveaways.filter((i) => message.guild.channels.has(i.channelID)).length;
+    let giveawayCount = client.giveawaysManager.giveaways.filter((i) => message.guild.channels.has(i.channelID)).filter((g) => !g.ended).length;
         if(giveawayCount >= 3){
         return message.channel.send("🛑 | Error: you can't create more than 3 giveaways on the same time, you must be premium to have more than 3 giveaways");
+    } else {
+
+        let timelimitfree = ms('3 days')
+        if(ms(args[0]) >= timelimitfree){
+        return message.channel.send("🛑 | Error: you can't create giveaways who are more than 3 days ago, you must be premium for up to 1 year");
     } else {
 
 
@@ -38,7 +44,8 @@ exports.run = (client, message, args) => {
                 }
             }
         }).then((gData) => {
-            console.log(gData); // {...} (messageid, end date and more)
+
         });
-    }// And the giveaway has started!
+    }
+}// And the giveaway has started!
     }

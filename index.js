@@ -14,13 +14,9 @@ const manager = new GiveawaysManager(client, {
         reaction: config.giveaways.reaction
     }
 })
-// We now have a giveawaysManager property to access the manager everywhere!
 client.giveawaysManager = manager;
 
-if(!client.shard){
- console.error("❌ | Please start the bot with the file sharder.js not index.js !")
-process.exit(1)
-}
+if(!client.shard) return console.error("❌ | Please start the bot with the file sharder.js not index.js !")
 
 
 fs.readdir("./events/", (err, files) => {
@@ -30,24 +26,11 @@ fs.readdir("./events/", (err, files) => {
       let eventName = file.split(".")[0];
       client.on(eventName, (...args) => {
         eventFunction.run(client, ...args)
-        console.log("✅ | executed the event " + files)
+        if(!file === "message.js") return console.log("✅ | executed the event " + file)
       })
       });
   });
 
   
-  client.on("message", message => {
-    if (message.author.bot) return;
-    if(message.content.indexOf(config.prefix) !== 0) return;
-    const args = message.content.slice(config.prefix.length).trim().split(/ +/g);
-    const command = args.shift().toLowerCase();
-    try {
-      let commandFile = require(`./commands/${command}.js`);
-      commandFile.run(client, message, args);
-      console.log(`✅ | ${message.author.tag} has executed the command ${message.content}`)
-    } catch (err) {
-   // console.log(`❌ | error while executing the command ${command}, ${err}`)
-    }
-  });
   
   client.login(config.token)
