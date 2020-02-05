@@ -1,8 +1,10 @@
-const Discord = require("discord.js")
-const config = require("../config.json")
+const config = require('../config.json');
+const Discord = require('discord.js')
 
 exports.run = (client, message, args) => {
-    var embed = new Discord.RichEmbed()
+
+    
+    const embed = new Discord.RichEmbed()
     .setTitle("🎶 Help - Youtube Bot ✨")
     .setDescription(`• The Server's prefix is \`${config.prefix}\` `)
     .addField("__**🍪 Useful**__", `» ${config.prefix}**help**
@@ -26,4 +28,5 @@ exports.run = (client, message, args) => {
     .addField(`bot's tip: use the command ${config.prefix}ping to know the bot's ping`, config.footer, false)
 
     message.channel.send(embed)
+
 }

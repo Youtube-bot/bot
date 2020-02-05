@@ -1,9 +1,9 @@
-const Discord = require("discord.js")
-const client = new Discord.Client()
-const config = require("./config.json")
-const fs = require("fs")
+const Discord = require("discord.js");
+const client = new Discord.Client();
+const fs = require("fs");
+const config = require("./config.json");
+const { Player } = require("discord-player");
 const { GiveawaysManager } = require("discord-giveaways");
-// Starts updating currents giveaways
 const manager = new GiveawaysManager(client, {
     storage: "./assets/giveaways.json",
     updateCountdownEvery: config.giveaways.updatetimer,
@@ -15,22 +15,35 @@ const manager = new GiveawaysManager(client, {
     }
 })
 client.giveawaysManager = manager;
+const player = new Player(client, config.music.YT_API_KEY);
+client.player = player;
+
+
 
 if(!client.shard) return console.error("❌ | Please start the bot with the file sharder.js not index.js !")
 
 
 fs.readdir("./events/", (err, files) => {
-    if (err) return console.error(err);
-    files.forEach(file => {
-      let eventFunction = require(`./events/${file}`);
-      let eventName = file.split(".")[0];
-      client.on(eventName, (...args) => {
-        eventFunction.run(client, ...args)
-        if(!file === "message.js") return console.log("✅ | executed the event " + file)
-      })
-      });
+  if (err) return console.error(err);
+  files.forEach(file => {
+    let eventFunction = require(`./events/${file}`);
+    let eventName = file.split(".")[0];
+    client.on(eventName, (...args) => eventFunction.run(client, ...args));
   });
+});
 
-  
-  
-  client.login(config.token)
+
+client.on("message", message => {
+  if (message.author.bot) return;
+  if(message.content.indexOf(config.prefix) !== 0) return;
+  const args = message.content.slice(config.prefix.length).trim().split(/ +/g);
+  const command = args.shift().toLowerCase();
+  try {
+    let commandFile = require(`./commands/${command}.js`);
+    commandFile.run(client, message, args);
+  } catch (err) {
+  }
+});
+
+
+client.login(config.token);

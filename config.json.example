@@ -9,6 +9,9 @@
         "updatetimer":"5000",
         "embedcolor":"FF0000", 
         "reaction":"🎉"
+    },
+        "music":{
+        "YT_API_KEY":""
     }
 
     

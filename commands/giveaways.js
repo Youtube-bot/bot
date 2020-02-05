@@ -4,17 +4,17 @@ const config = require("../config.json")
 
 exports.run = (client, message, args) => {
 
-let allGiveaways = client.giveawaysManager.giveaways.lenght; 
+const allGiveaways = client.giveawaysManager.giveaways.length; 
 
-let onServer = client.giveawaysManager.giveaways.filter((g) => g.guildID === message.guild.id).lenght;
+const onServer = client.giveawaysManager.giveaways.filter((g) => g.guildID === message.guild.id).length;
 
-let notEnded = client.giveawaysManager.giveaways.filter((g) => !g.ended).lenght;
+const notEnded = client.giveawaysManager.giveaways.filter((g) => !g.ended).length;
 
-let Ended = client.giveawaysManager.giveaways.filter((g) => g.ended).lenght;
+const Ended = client.giveawaysManager.giveaways.filter((r) => r.ended).length;
 
-let gnotEnded = client.giveawaysManager.giveaways.filter((g) => !g.ended).filter((g) => g.guildID === message.guild.id).lenght;
+const gnotEnded = client.giveawaysManager.giveaways.filter((g) => !g.ended).filter((d) => d.guildID === message.guild.id).length;
 
-let gEnded = client.giveawaysManager.giveaways.filter((g) => g.ended).filter((g) => g.guildID === message.guild.id).lenght;
+const gEnded = client.giveawaysManager.giveaways.filter((g) => g.ended).filter((d) => d.guildID === message.guild.id).length;
 
 
 const embed = new Discord.RichEmbed()
@@ -25,6 +25,6 @@ const embed = new Discord.RichEmbed()
 .addField("Bot's Total Giveaways ended", `» There have been ${Ended} giveaways that are currently finished `)
 .addField("Server's Total Giveaways not ended", `» There have been ${gnotEnded} giveaways that are not currently finished `)
 .addField("Server's Total Giveaways ended", `» There have been ${gEnded} giveaways that are currently finished `)
-.setFooter("thanks for using the bot !", config.footer)
+.addField("thanks for using the bot !", "[Donate](https://www.patreon.com/botyoutube) ● [Website](https://youtube-bot.com) ● [Like Me !](https://bladebotlist.xyz/bot/youtubebot) ● [Invite](https://discordapp.com/oauth2/authorize?client_id=596068311863918604&permissions=8&scope=bot)")
 message.channel.send(embed)
 }

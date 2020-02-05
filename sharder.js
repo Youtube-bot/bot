@@ -3,13 +3,13 @@ const config = require("./config.json")
 moment = require("moment"), 
 shards = new ShardingManager("./index.js", {
     token: config.token, 
-    totalShards: 2,  // or "auto",
+    totalShards: config.shards,  // or "auto",
     respawn: true
 });
 
 
 shards.on("launch", (shard) => { 
-	console.log(`${get_date(new Date())} I launched shard ${shard.ids + 1}.`);
+	console.log(`${get_date(new Date())} I launched shard ${shard.id + 1}.`);
 });
 
 shards.spawn() //When all shards are loaded, it puts a message in the console.
