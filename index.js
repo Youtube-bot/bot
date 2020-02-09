@@ -2,7 +2,15 @@ const Discord = require("discord.js");
 const client = new Discord.Client();
 const fs = require("fs");
 const config = require("./config.json");
+const opusscript = require("opusscript")
 const { Player } = require("discord-player");
+const player = new Player(client, config.music.YT_API_KEY, {
+  leaveOnEnd: false,
+  leaveOnStop: true,
+  leaveOnEmpty: true
+});
+client.player = player;
+
 const { GiveawaysManager } = require("discord-giveaways");
 const manager = new GiveawaysManager(client, {
     storage: "./assets/giveaways.json",
@@ -15,8 +23,7 @@ const manager = new GiveawaysManager(client, {
     }
 })
 client.giveawaysManager = manager;
-const player = new Player(client, config.music.YT_API_KEY);
-client.player = player;
+
 
 
 
